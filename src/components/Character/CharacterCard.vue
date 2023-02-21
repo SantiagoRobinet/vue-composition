@@ -38,12 +38,16 @@ const props = defineProps<CharacterCardProps>();
 </template>
 
 <style scoped>
+span {
+  color: beige;
+}
 .card__container {
-  background-color: tomato;
+  background-color: rgb(108, 106, 106);
   display: flex;
   flex-direction: row;
-  border-bottom-left-radius: 18%;
-  border-top-left-radius: 44%;
+  border-radius: 8px;
+  border-bottom-left-radius: 35%;
+  border-top-left-radius: 40%;
 }
 .image {
   border-radius: 50%;

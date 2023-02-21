@@ -7,10 +7,3 @@ import GlobalHeader from "./components/Header/GlobalHeader.vue";
   <GlobalHeader />
   <RouterView />
 </template>
-
-<style scoped>
-body {
-  height: 100vh;
-  width: 100vw;
-}
-</style>

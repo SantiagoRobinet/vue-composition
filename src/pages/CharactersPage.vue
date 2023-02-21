@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import type { Ref } from "vue";
 import type { Character } from "../types/Character";
+import CharacterCard from "@/components/Character/CharacterCard.vue";
 
 const allCharacters: Ref<Character[]> = ref([]);
 
@@ -22,26 +23,32 @@ onMounted(() => {
 
 <template>
   <div class="characters">
-    <h1>Characters</h1>
-    <div v-for="character in allCharacters" :key="character.id">
-      <img :src="character.image" alt="Character Image" />
-      <div>
-        <p>
-          {{ character.name }}
-        </p>
-      </div>
+    <div
+      class="grid-item"
+      v-for="character in allCharacters"
+      :key="character.id"
+    >
+      <CharacterCard
+        :id="character.id"
+        :name="character.name"
+        :image="character.image"
+        :status="character.status"
+        :species="character.species"
+        :origin="character.origin"
+        :location="character.location"
+      />
     </div>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .characters {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-  }
+<style scoped>
+.characters {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 16px;
+}
+.grid-item {
+  padding: 16px;
 }
 </style>

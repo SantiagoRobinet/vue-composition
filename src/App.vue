@@ -13,9 +13,4 @@ body {
   height: 100vh;
   width: 100vw;
 }
-.container {
-  width: 100%;
-  height: 100px;
-  background-color: black;
-}
 </style>

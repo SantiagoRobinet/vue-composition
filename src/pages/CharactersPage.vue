@@ -1,31 +1,15 @@
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
-import type { Ref } from "vue";
-import type { Character } from "../types/Character";
 import CharacterCard from "@/components/Character/CharacterCard.vue";
+import { useCharacters } from "@/composables/useCharacters";
 
-const allCharacters: Ref<Character[]> = ref([]);
-
-async function fetchCharacters(): Promise<void> {
-  try {
-    const res = await fetch("https://rickandmortyapi.com/api/character");
-    const parsedResponse = await res.json();
-    allCharacters.value = parsedResponse.results;
-  } catch (e) {
-    alert(e);
-  }
-}
-
-onMounted(() => {
-  fetchCharacters();
-});
+const { charactersList, nextPage, previousPage } = useCharacters();
 </script>
 
 <template>
   <div class="characters">
     <div
       class="grid-item"
-      v-for="character in allCharacters"
+      v-for="character in charactersList"
       :key="character.id"
     >
       <CharacterCard
@@ -38,6 +22,10 @@ onMounted(() => {
         :location="character.location"
       />
     </div>
+  </div>
+  <div>
+    <button @click="previousPage">Previous</button>
+    <button @click="nextPage">Next</button>
   </div>
 </template>
 

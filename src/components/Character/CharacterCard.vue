@@ -21,7 +21,7 @@ const props = defineProps<CharacterCardProps>();
 <template>
   <div class="card__container">
     <img
-      :class="[props.status?.toLocaleLowerCase(), 'image']"
+      :class="[props.status.toLocaleLowerCase(), 'image']"
       :src="props.image"
       alt="Character Image"
     />
